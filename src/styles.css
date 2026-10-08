@@ -1,0 +1,190 @@
+/* The whole stylesheet, finished. Every class the lab uses is here, so you
+   never need to edit this file. */
+:root {
+  --bg: #1b1f27;
+  --side: #151920;
+  --panel: #232833;
+  --line: #343b49;
+  --text: #e8ebf1;
+  --muted: #98a2b3;
+  --accent: #6cc6a8;
+  --accent-ink: #10231c;
+  --pin: #f2c14e;
+  --heart: #ff7a8a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  height: 100vh;
+  max-width: 980px;
+  margin: 0 auto;
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+}
+
+/* ---- Sidebar ------------------------------------------------------------ */
+.sidebar {
+  background: var(--side);
+  padding: 18px 12px;
+  border-right: 1px solid var(--line);
+}
+
+.sidebar h2 {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 8px 10px;
+}
+
+.channel {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin-bottom: 2px;
+  color: var(--muted);
+}
+
+.channel:hover { background: var(--panel); color: var(--text); }
+
+.channel.active {
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+/* ---- Main column -------------------------------------------------------- */
+.main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.chat-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.chat-header h1 { font-size: 1.15rem; margin: 0; }
+
+.typing {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-style: italic;
+}
+
+.pinned-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 20px;
+  background: #2b2a20;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.9rem;
+}
+
+.pinned-bar .label { color: var(--pin); font-weight: 600; flex: none; }
+.pinned-bar .pinned-text { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.pinned-bar button,
+.toolbar button {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 3px 10px;
+  font-size: 0.8rem;
+}
+
+/* ---- Messages ----------------------------------------------------------- */
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 14px 12px;
+}
+
+.message {
+  position: relative;
+  padding: 8px 10px;
+  border-radius: 8px;
+  user-select: none;
+  cursor: default;
+}
+
+.message:hover { background: var(--panel); }
+
+.message.pinned { box-shadow: inset 3px 0 0 var(--pin); }
+
+.author { font-weight: 600; margin-right: 8px; }
+
+.text { margin: 2px 0 0; line-height: 1.45; white-space: pre-wrap; }
+
+.time { display: block; margin-top: 4px; font-size: 0.8rem; color: var(--muted); }
+
+.hearts {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: var(--heart);
+}
+
+.toolbar {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+}
+
+/* ---- Composer ----------------------------------------------------------- */
+.composer {
+  display: flex;
+  gap: 10px;
+  padding: 14px 20px 18px;
+  border-top: 1px solid var(--line);
+}
+
+.composer textarea {
+  flex: 1;
+  resize: none;
+  font: inherit;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 9px 12px;
+}
+
+.composer textarea:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+
+.composer button {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: 0;
+  border-radius: 8px;
+  padding: 0 20px;
+  font-weight: 600;
+}
